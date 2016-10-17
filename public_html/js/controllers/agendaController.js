@@ -10,6 +10,20 @@ app.controller('AgendaController', ['$scope', function($scope) {
         vm.resetDay();
         vm.agenda.push(vm.day);
     };
+    changeFrom=function(){
+        var sFrom = $("#selectFrom").prop('selectedIndex');
+        var sTo =  $("#selectTo").prop('selectedIndex');
+        if (sTo<sFrom)
+            $('#selectTo option').eq(sFrom).prop('selected', true);
+
+        
+    };
+    changeTo=function(){
+        var sFrom = $("#selectFrom").prop('selectedIndex');
+        var sTo =  $("#selectTo").prop('selectedIndex');
+        if (sTo<sFrom)
+            $('#selectFrom option').eq(sTo).prop('selected', true);
+    };
     
     vm.resetAgenda = function(){
         vm.agenda.length = 0;
@@ -29,6 +43,7 @@ app.controller('AgendaController', ['$scope', function($scope) {
             argument: 'AngularJS',
             teacher: 'Fabio Fazio'
         });
+        
         vm.day.events.push({
             from: 13.30,
             to: 17.30,
@@ -36,8 +51,8 @@ app.controller('AgendaController', ['$scope', function($scope) {
             argument: 'AngularJS',
             teacher: 'Fabio Fazio'
         });
-        vm.day.index  = -1;*/
-        
+        vm.day.index  = -1;
+        */
         
     };
     
@@ -65,7 +80,7 @@ app.controller('AgendaController', ['$scope', function($scope) {
             vm.resetDay();
         }
     };
-    
+     
     vm.showDay = function(index){
         console.log(index);
         vm.day = vm.getDay(vm.agenda[index]);
