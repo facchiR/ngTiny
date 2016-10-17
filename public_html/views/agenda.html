@@ -5,10 +5,8 @@
     <div class="alert alert-warning">
         <h4>Esercizio</h4>
         <p>
-           Per completare questo esercizio servirà
-           gestire il caricamento dinamico del calendario e
-           attivare il comportamento di add edit e delete appoggiandosi
-           ad un form da realizzare sotto al calendario
+          Tentativo di soluzione di Roberta Facchi
+       
         </p>
     </div>
 
@@ -20,6 +18,7 @@
                     <th>Data</th>
                     <th>Orario</th>
                     <th>Lezione</th>
+                    <th>Modifica</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,6 +28,7 @@
                         <div class="dayofmonth">{{d.date|date:'dd'}}</div>
                         <div class="dayofweek">{{d.date|date:'EEEE'}}</div>
                         <div class="shortdate text-muted">{{d.date|date:'MMMM yyyy'}}</div>
+                        
                     </td>
                     <td ng-repeat="e in d.events" class="agenda-time">
                         Dalle ore: {{e.from}}<br>alle ore:{{e.to}}
@@ -37,7 +37,7 @@
                         Docente:{{e.teacher}}
                         Materia:{{e.lesson}}
                         Argomento:{{e.argument}}
-                  
+                       
                     </td>
                     <td>
                         <div class="text-right">
@@ -135,14 +135,14 @@
             <div ng-model="event">
                 <div class="form-group col-md-6 col-sm-12">
                     <label for="exampleTime1">Orario inizio</label>
-                    <select class="form-control" id="exampleTime1" name="time" ng-model="event.from">
+                    <select class="form-control" onchange="changeFrom()" id="selectFrom" name="time" ng-model="event.from">
                       <option value="8.30">8.30</option>
                       <option value="10.30">10.30</option>
                       <option value="13.30">13.30</option>
                       <option value="15.30">15.30</option>
                     </select>
                      <label for="exampleTime1">Orario uscita</label>
-                    <select class="form-control" id="exampleTime1" name="time" ng-model="event.to">
+                    <select class="form-control" onchange="changeTo()" id="selectTo" name="time" ng-model="event.to">
                       <option value="10.30">10.30</option>
                       <option value="12.30">12.30</option>
                       <option value="15.30">15.30</option>
@@ -153,7 +153,7 @@
                     <label for="exampleClass1">Lezione</label>             
                     <input type="text" class="form-control" id="exampleClass1" name="class" ng-model="event.teacher" placeholder="Inserire docente">
                     <input type="text" class="form-control" id="exampleClass1" name="class" ng-model="event.lesson" placeholder="Inserire materia">
-                    <input type="text" class="form-control" id="exampleClass1" name="class" ng-model="event.argument" placeholder="Inserire orario">
+                    <input type="text" class="form-control" id="exampleClass1" name="class" ng-model="event.argument" placeholder="Inserire argomento">
                 </div>
             </div>
             <div class="col-sm-12 text-center">
